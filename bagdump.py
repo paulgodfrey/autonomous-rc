@@ -70,9 +70,8 @@ def camera2dict(msg, write_results, camera_dict):
 
 def steering2dict(msg, steering_dict):
     steering_dict["timestamp"].append(msg.header.stamp.to_nsec())
-    steering_dict["angle"].append(msg.steering_wheel_angle)
-    steering_dict["torque"].append(msg.steering_wheel_torque)
-    steering_dict["speed"].append(msg.speed)
+    steering_dict["angle"].append(msg.axes[3])
+    steering_dict["speed"].append(msg.axes[1])
 
 def camera_select(topic, select_from):
     if topic.startswith('/left'):
@@ -87,10 +86,10 @@ def camera_select(topic, select_from):
 def main():
     parser = argparse.ArgumentParser(description='Convert rosbag to images and csv.')
 
-    parser.add_argument('-o', '--outdir', type=str, nargs='?', default='/output',
+    parser.add_argument('-o', '--outdir', type=str, nargs='?', default='./training_data',
         help='Output folder')
 
-    parser.add_argument('-i', '--indir', type=str, nargs='?', default='/data',
+    parser.add_argument('-i', '--indir', type=str, nargs='?', default='./bags',
         help='Input folder where bagfiles are located')
 
     parser.add_argument('-f', '--img_format', type=str, nargs='?', default='jpg',
@@ -114,11 +113,13 @@ def main():
     include_images = False if msg_only else True
     include_others = True
 
-    filter_topics = [STEERING_TOPIC, GPS_FIX_TOPIC, GPS_FIX_NEW_TOPIC]
-
     filter_topics = [STEERING_TOPIC, LEFT_CAMERA_TOPIC, CENTER_CAMERA_TOPIC, RIGHT_CAMERA_TOPIC]
+    
+    print("topics", filter_topics)
 
     bagsets = find_bagsets(indir, filter_topics=filter_topics)
+
+    print("bagsets", bagsets)
 
     for bs in bagsets:
         print("Processing set %s" % bs.name)
@@ -156,7 +157,7 @@ def main():
 
             elif topic == STEERING_TOPIC:
                 if debug_print:
-                    print("steering %d %f" % (timestamp, msg.steering_wheel_angle))
+                    print("steering %d %f" % (timestamp, msg.axes[3]))
 
                 steering2dict(msg, steering_dict)
                 stats['msg_count'] += 1
@@ -210,5 +211,4 @@ def main():
             interpolated_csv_path = os.path.join(dataset_outdir, 'interpolated.csv')
             filtered.to_csv(interpolated_csv_path, header=True)
 
-if __name__ == '__main__':
-    main()
+main()

@@ -123,19 +123,10 @@ class BagSet(object):
 
             self.infos.append(info)
 
-            if self._remap_camera:
-                filter_topics = self._filter_topics_remap(filter_topics)
             filtered = [x['topic'] for x in info['topics'] if not filter_topics or x['topic'] in filter_topics]
-            gps_fix_replace = False
+            gps_fix_replace = False 
 
-            if GPS_FIX_NEW_TOPIC in filtered and GPS_FIX_TOPIC in filtered:
-                print("New GPS fix topic %s replacing old %s" % (GPS_FIX_NEW_TOPIC, GPS_FIX_TOPIC))
-                gps_fix_replace = True
-
-            for x in filtered:
-                if gps_fix_replace and x == GPS_FIX_TOPIC:
-                    # skip old gps topic
-                    continue
+            for x in filtered: 
                 self.topic_map[x].append((info['start'], info['path']))
                 self.topic_map[x] = sorted(self.topic_map[x])
 
@@ -162,12 +153,11 @@ class BagSet(object):
             if self._remap_camera:
                 topic_filter = self._filter_topics_remap(topic_filter)
             filtered = [x['topic'] for x in info['topics'] if not topic_filter or x['topic'] in topic_filter]
-            gps_fix_replace = False
-            if GPS_FIX_NEW_TOPIC in filtered and GPS_FIX_TOPIC in filtered:
-                gps_fix_replace = True
+
+
+
             for topic in info['topics']:
-                if ((not topic_filter or topic['topic'] in topic_filter) and
-                        (not gps_fix_replace or topic['topic'] != GPS_FIX_TOPIC)):
+                if (not topic_filter or topic['topic'] in topic_filter):
                     count += topic['messages']
         return count
 
