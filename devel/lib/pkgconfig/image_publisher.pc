@@ -1,0 +1,8 @@
+prefix=/home/nvidia/autonomous-rc/devel
+
+Name: image_publisher
+Description: Description of image_publisher
+Version: 1.12.20
+Cflags: -I/home/nvidia/autonomous-rc/devel/include
+Libs: -L/home/nvidia/autonomous-rc/devel/lib 
+Requires: 

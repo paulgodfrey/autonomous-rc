@@ -1,0 +1,8 @@
+prefix=/home/nvidia/autonomous-rc/devel
+
+Name: camera_calibration
+Description: Description of camera_calibration
+Version: 1.12.20
+Cflags: 
+Libs: -L/home/nvidia/autonomous-rc/devel/lib 
+Requires: 

@@ -38,6 +38,9 @@ Boost_DATE_TIME_LIBRARY_DEBUG:FILEPATH=/usr/lib/aarch64-linux-gnu/libboost_date_
 //Boost date_time library (release)
 Boost_DATE_TIME_LIBRARY_RELEASE:FILEPATH=/usr/lib/aarch64-linux-gnu/libboost_date_time.so
 
+//The directory containing a CMake configuration file for Boost.
+Boost_DIR:PATH=Boost_DIR-NOTFOUND
+
 //Boost filesystem library (debug)
 Boost_FILESYSTEM_LIBRARY_DEBUG:FILEPATH=/usr/lib/aarch64-linux-gnu/libboost_filesystem.so
 
@@ -70,6 +73,12 @@ Boost_SERIALIZATION_LIBRARY_DEBUG:FILEPATH=/usr/lib/aarch64-linux-gnu/libboost_s
 
 //Boost serialization library (release)
 Boost_SERIALIZATION_LIBRARY_RELEASE:FILEPATH=/usr/lib/aarch64-linux-gnu/libboost_serialization.so
+
+//Boost signals library (debug)
+Boost_SIGNALS_LIBRARY_DEBUG:FILEPATH=/usr/lib/aarch64-linux-gnu/libboost_signals.so
+
+//Boost signals library (release)
+Boost_SIGNALS_LIBRARY_RELEASE:FILEPATH=/usr/lib/aarch64-linux-gnu/libboost_signals.so
 
 //Boost system library (debug)
 Boost_SYSTEM_LIBRARY_DEBUG:FILEPATH=/usr/lib/aarch64-linux-gnu/libboost_system.so
@@ -328,6 +337,9 @@ CUDA_USE_STATIC_CUDA_RUNTIME:BOOL=OFF
 // option.
 CUDA_VERBOSE_BUILD:BOOL=OFF
 
+//Version of CUDA as computed from nvcc.
+CUDA_VERSION:STRING=8.0
+
 //"cublas" library
 CUDA_cublas_LIBRARY:FILEPATH=/usr/local/cuda-8.0/lib64/libcublas.so
 
@@ -370,6 +382,9 @@ EMPY_EXECUTABLE:FILEPATH=/usr/bin/empy
 //Empy script
 EMPY_SCRIPT:STRING=/usr/bin/empy
 
+//The directory containing a CMake configuration file for Eigen3.
+Eigen3_DIR:PATH=/usr/lib/cmake/eigen3
+
 //Path to a file.
 FLANN_INCLUDE_DIRS:PATH=/usr/include
 
@@ -378,6 +393,15 @@ FLANN_LIBRARY:FILEPATH=/usr/lib/aarch64-linux-gnu/libflann_cpp_s.a
 
 //Path to a library.
 FLANN_LIBRARY_DEBUG:FILEPATH=/usr/lib/aarch64-linux-gnu/libflann_cpp_s.a
+
+//Path to a file.
+FREETYPE_INCLUDE_DIR_freetype2:PATH=/usr/include/aarch64-linux-gnu/freetype2
+
+//Path to a file.
+FREETYPE_INCLUDE_DIR_ft2build:PATH=/usr/include/freetype2
+
+//Path to a library.
+FREETYPE_LIBRARY:FILEPATH=/usr/lib/aarch64-linux-gnu/libfreetype.so
 
 //Path to a file.
 GTEST_INCLUDE_DIR:PATH=/usr/include
@@ -393,6 +417,126 @@ GTEST_MAIN_LIBRARY:FILEPATH=GTEST_MAIN_LIBRARY-NOTFOUND
 
 //Path to a library.
 GTEST_MAIN_LIBRARY_DEBUG:FILEPATH=GTEST_MAIN_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a file.
+GTK2_ATK_INCLUDE_DIR:PATH=GTK2_ATK_INCLUDE_DIR-NOTFOUND
+
+//Path to a library.
+GTK2_ATK_LIBRARY_DEBUG:FILEPATH=GTK2_ATK_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+GTK2_ATK_LIBRARY_RELEASE:FILEPATH=GTK2_ATK_LIBRARY_RELEASE-NOTFOUND
+
+//Path to a file.
+GTK2_CAIRO_INCLUDE_DIR:PATH=GTK2_CAIRO_INCLUDE_DIR-NOTFOUND
+
+//Path to a library.
+GTK2_CAIRO_LIBRARY_DEBUG:FILEPATH=GTK2_CAIRO_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+GTK2_CAIRO_LIBRARY_RELEASE:FILEPATH=GTK2_CAIRO_LIBRARY_RELEASE-NOTFOUND
+
+//Path to a file.
+GTK2_FONTCONFIG_INCLUDE_DIR:PATH=/usr/include
+
+//Path to a file.
+GTK2_GDKCONFIG_INCLUDE_DIR:PATH=GTK2_GDKCONFIG_INCLUDE_DIR-NOTFOUND
+
+//Path to a file.
+GTK2_GDK_INCLUDE_DIR:PATH=GTK2_GDK_INCLUDE_DIR-NOTFOUND
+
+//Path to a library.
+GTK2_GDK_LIBRARY_DEBUG:FILEPATH=GTK2_GDK_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+GTK2_GDK_LIBRARY_RELEASE:FILEPATH=GTK2_GDK_LIBRARY_RELEASE-NOTFOUND
+
+//Path to a file.
+GTK2_GDK_PIXBUF_INCLUDE_DIR:PATH=GTK2_GDK_PIXBUF_INCLUDE_DIR-NOTFOUND
+
+//Path to a library.
+GTK2_GDK_PIXBUF_LIBRARY_DEBUG:FILEPATH=GTK2_GDK_PIXBUF_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+GTK2_GDK_PIXBUF_LIBRARY_RELEASE:FILEPATH=GTK2_GDK_PIXBUF_LIBRARY_RELEASE-NOTFOUND
+
+//Path to a library.
+GTK2_GIO_LIBRARY_DEBUG:FILEPATH=GTK2_GIO_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+GTK2_GIO_LIBRARY_RELEASE:FILEPATH=/usr/lib/aarch64-linux-gnu/libgio-2.0.so
+
+//Path to a file.
+GTK2_GLIBCONFIG_INCLUDE_DIR:PATH=/usr/lib/aarch64-linux-gnu/glib-2.0/include
+
+//Path to a file.
+GTK2_GLIB_INCLUDE_DIR:PATH=/usr/include/glib-2.0
+
+//Path to a library.
+GTK2_GLIB_LIBRARY_DEBUG:FILEPATH=GTK2_GLIB_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+GTK2_GLIB_LIBRARY_RELEASE:FILEPATH=/usr/lib/aarch64-linux-gnu/libglib-2.0.so
+
+//Path to a library.
+GTK2_GMODULE_LIBRARY_DEBUG:FILEPATH=GTK2_GMODULE_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+GTK2_GMODULE_LIBRARY_RELEASE:FILEPATH=/usr/lib/aarch64-linux-gnu/libgmodule-2.0.so
+
+//Path to a file.
+GTK2_GOBJECT_INCLUDE_DIR:PATH=/usr/include/glib-2.0
+
+//Path to a library.
+GTK2_GOBJECT_LIBRARY_DEBUG:FILEPATH=GTK2_GOBJECT_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+GTK2_GOBJECT_LIBRARY_RELEASE:FILEPATH=/usr/lib/aarch64-linux-gnu/libgobject-2.0.so
+
+//Path to a library.
+GTK2_GTHREAD_LIBRARY_DEBUG:FILEPATH=GTK2_GTHREAD_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+GTK2_GTHREAD_LIBRARY_RELEASE:FILEPATH=/usr/lib/aarch64-linux-gnu/libgthread-2.0.so
+
+//Path to a file.
+GTK2_GTK_INCLUDE_DIR:PATH=GTK2_GTK_INCLUDE_DIR-NOTFOUND
+
+//Path to a library.
+GTK2_GTK_LIBRARY_DEBUG:FILEPATH=GTK2_GTK_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+GTK2_GTK_LIBRARY_RELEASE:FILEPATH=GTK2_GTK_LIBRARY_RELEASE-NOTFOUND
+
+//Path to a library.
+GTK2_PANGOCAIRO_LIBRARY_DEBUG:FILEPATH=GTK2_PANGOCAIRO_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+GTK2_PANGOCAIRO_LIBRARY_RELEASE:FILEPATH=GTK2_PANGOCAIRO_LIBRARY_RELEASE-NOTFOUND
+
+//Path to a library.
+GTK2_PANGOFT2_LIBRARY_DEBUG:FILEPATH=GTK2_PANGOFT2_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+GTK2_PANGOFT2_LIBRARY_RELEASE:FILEPATH=GTK2_PANGOFT2_LIBRARY_RELEASE-NOTFOUND
+
+//Path to a library.
+GTK2_PANGOXFT_LIBRARY_DEBUG:FILEPATH=GTK2_PANGOXFT_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+GTK2_PANGOXFT_LIBRARY_RELEASE:FILEPATH=GTK2_PANGOXFT_LIBRARY_RELEASE-NOTFOUND
+
+//Path to a file.
+GTK2_PANGO_INCLUDE_DIR:PATH=GTK2_PANGO_INCLUDE_DIR-NOTFOUND
+
+//Path to a library.
+GTK2_PANGO_LIBRARY_DEBUG:FILEPATH=GTK2_PANGO_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+GTK2_PANGO_LIBRARY_RELEASE:FILEPATH=GTK2_PANGO_LIBRARY_RELEASE-NOTFOUND
+
+//Path to a file.
+GTK2_X11_INCLUDE_DIR:PATH=/usr/include
 
 //Path to a file.
 LIBUSB_1_INCLUDE_DIR:PATH=LIBUSB_1_INCLUDE_DIR-NOTFOUND
@@ -675,6 +819,12 @@ _CATKIN_GTEST_INCLUDE:FILEPATH=/usr/include/gtest/gtest.h
 //Path to a file.
 _CATKIN_GTEST_SRC:FILEPATH=/usr/src/gtest/src/gtest.cc
 
+//Path to a file.
+_file_name:FILEPATH=/home/nvidia/autonomous-rc/src/image_pipeline/image_proc/test/test_rectify.xml
+
+//Path to a file.
+_path_name:FILEPATH=/home/nvidia/autonomous-rc/src/image_pipeline/camera_calibration/test/multiple_boards.py
+
 //Value Computed by CMake
 ackermann_cmd_mux_BINARY_DIR:STATIC=/home/nvidia/autonomous-rc/build/racecar/ackermann_cmd_mux
 
@@ -699,17 +849,47 @@ bond_DIR:PATH=/opt/ros/kinetic/share/bond/cmake
 //The directory containing a CMake configuration file for bondcpp.
 bondcpp_DIR:PATH=/opt/ros/kinetic/share/bondcpp/cmake
 
+//Value Computed by CMake
+camera_calibration_BINARY_DIR:STATIC=/home/nvidia/autonomous-rc/build/image_pipeline/camera_calibration
+
+//Value Computed by CMake
+camera_calibration_SOURCE_DIR:STATIC=/home/nvidia/autonomous-rc/src/image_pipeline/camera_calibration
+
+//The directory containing a CMake configuration file for camera_calibration_parsers.
+camera_calibration_parsers_DIR:PATH=/opt/ros/kinetic/share/camera_calibration_parsers/cmake
+
+//The directory containing a CMake configuration file for camera_info_manager.
+camera_info_manager_DIR:PATH=/opt/ros/kinetic/share/camera_info_manager/cmake
+
 //The directory containing a CMake configuration file for catkin.
 catkin_DIR:PATH=/opt/ros/kinetic/share/catkin/cmake
 
 //The directory containing a CMake configuration file for class_loader.
 class_loader_DIR:PATH=/opt/ros/kinetic/share/class_loader/cmake
 
+//The directory containing a CMake configuration file for cmake_modules.
+cmake_modules_DIR:PATH=/opt/ros/kinetic/share/cmake_modules/cmake
+
 //The directory containing a CMake configuration file for cpp_common.
 cpp_common_DIR:PATH=/opt/ros/kinetic/share/cpp_common/cmake
 
+//The directory containing a CMake configuration file for cv_bridge.
+cv_bridge_DIR:PATH=/opt/ros/kinetic/share/cv_bridge/cmake
+
+//Value Computed by CMake
+depth_image_proc_BINARY_DIR:STATIC=/home/nvidia/autonomous-rc/build/image_pipeline/depth_image_proc
+
+//Dependencies for the target
+depth_image_proc_LIB_DEPENDS:STATIC=general;/opt/ros/kinetic/lib/libcv_bridge.so;general;/opt/ros/kinetic/lib/libeigen_conversions.so;general;/opt/ros/kinetic/lib/liborocos-kdl.so.1.3.0;general;/opt/ros/kinetic/lib/libimage_geometry.so;general;/opt/ros/kinetic/lib/libopencv_calib3d3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_core3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_features2d3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_flann3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_highgui3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_imgcodecs3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_imgproc3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_ml3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_objdetect3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_photo3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_shape3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_stitching3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_superres3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_video3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_videoio3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_videostab3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_viz3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_aruco3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_bgsegm3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_bioinspired3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_ccalib3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_cvv3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_datasets3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_dpm3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_face3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_fuzzy3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_hdf3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_line_descriptor3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_optflow3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_phase_unwrapping3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_plot3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_reg3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_rgbd3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_saliency3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_stereo3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_structured_light3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_surface_matching3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_text3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_xfeatures2d3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_ximgproc3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_xobjdetect3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_xphoto3.so.3.2.0;general;/opt/ros/kinetic/lib/libimage_transport.so;general;/opt/ros/kinetic/lib/libnodeletlib.so;general;/opt/ros/kinetic/lib/libbondcpp.so;general;/usr/lib/aarch64-linux-gnu/libuuid.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/aarch64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/aarch64-linux-gnu/libpython2.7.so;general;/usr/lib/aarch64-linux-gnu/libboost_program_options.so;general;/usr/lib/aarch64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/libtf2_ros.so;general;/opt/ros/kinetic/lib/libactionlib.so;general;/opt/ros/kinetic/lib/libmessage_filters.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/aarch64-linux-gnu/libboost_signals.so;general;/usr/lib/aarch64-linux-gnu/libboost_filesystem.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/aarch64-linux-gnu/liblog4cxx.so;general;/usr/lib/aarch64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libtf2.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/aarch64-linux-gnu/libboost_system.so;general;/usr/lib/aarch64-linux-gnu/libboost_thread.so;general;/usr/lib/aarch64-linux-gnu/libboost_chrono.so;general;/usr/lib/aarch64-linux-gnu/libboost_date_time.so;general;/usr/lib/aarch64-linux-gnu/libboost_atomic.so;general;/usr/lib/aarch64-linux-gnu/libpthread.so;general;/usr/lib/aarch64-linux-gnu/libconsole_bridge.so;general;opencv_vstab;general;opencv_tegra;general;opencv_imuvstab;general;opencv_facedetect;general;opencv_esm_panorama;general;opencv_detection_based_tracker;general;opencv_videostab;general;opencv_video;general;opencv_superres;general;opencv_stitching;general;opencv_photo;general;opencv_objdetect;general;opencv_ml;general;opencv_legacy;general;opencv_imgproc;general;opencv_highgui;general;opencv_gpu;general;opencv_flann;general;opencv_features2d;general;opencv_core;general;opencv_contrib;general;opencv_calib3d;
+
+//Value Computed by CMake
+depth_image_proc_SOURCE_DIR:STATIC=/home/nvidia/autonomous-rc/src/image_pipeline/depth_image_proc
+
 //The directory containing a CMake configuration file for dynamic_reconfigure.
 dynamic_reconfigure_DIR:PATH=/opt/ros/kinetic/share/dynamic_reconfigure/cmake
+
+//The directory containing a CMake configuration file for eigen_conversions.
+eigen_conversions_DIR:PATH=/opt/ros/kinetic/share/eigen_conversions/cmake
 
 //The directory containing a CMake configuration file for gencpp.
 gencpp_DIR:PATH=/opt/ros/kinetic/share/gencpp/cmake
@@ -757,8 +937,56 @@ gtest_force_shared_crt:BOOL=OFF
 //Dependencies for the target
 gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 
+//The directory containing a CMake configuration file for image_geometry.
+image_geometry_DIR:PATH=/opt/ros/kinetic/share/image_geometry/cmake
+
+//Value Computed by CMake
+image_pipeline_BINARY_DIR:STATIC=/home/nvidia/autonomous-rc/build/image_pipeline/image_pipeline
+
+//Value Computed by CMake
+image_pipeline_SOURCE_DIR:STATIC=/home/nvidia/autonomous-rc/src/image_pipeline/image_pipeline
+
+//Value Computed by CMake
+image_proc_BINARY_DIR:STATIC=/home/nvidia/autonomous-rc/build/image_pipeline/image_proc
+
+//The directory containing a CMake configuration file for image_proc.
+image_proc_DIR:PATH=/home/nvidia/autonomous-rc/devel/share/image_proc/cmake
+
+//Dependencies for the target
+image_proc_LIB_DEPENDS:STATIC=general;/opt/ros/kinetic/lib/libcv_bridge.so;general;/opt/ros/kinetic/lib/libimage_geometry.so;general;/opt/ros/kinetic/lib/libopencv_calib3d3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_core3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_features2d3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_flann3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_highgui3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_imgcodecs3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_imgproc3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_ml3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_objdetect3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_photo3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_shape3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_stitching3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_superres3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_video3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_videoio3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_videostab3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_viz3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_aruco3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_bgsegm3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_bioinspired3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_ccalib3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_cvv3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_datasets3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_dpm3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_face3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_fuzzy3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_hdf3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_line_descriptor3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_optflow3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_phase_unwrapping3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_plot3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_reg3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_rgbd3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_saliency3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_stereo3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_structured_light3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_surface_matching3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_text3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_xfeatures2d3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_ximgproc3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_xobjdetect3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_xphoto3.so.3.2.0;general;/opt/ros/kinetic/lib/libimage_transport.so;general;/opt/ros/kinetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/kinetic/lib/libmessage_filters.so;general;/opt/ros/kinetic/lib/libnodeletlib.so;general;/opt/ros/kinetic/lib/libbondcpp.so;general;/usr/lib/aarch64-linux-gnu/libuuid.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/aarch64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/aarch64-linux-gnu/libpython2.7.so;general;/usr/lib/aarch64-linux-gnu/libboost_program_options.so;general;/usr/lib/aarch64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/aarch64-linux-gnu/libboost_signals.so;general;/usr/lib/aarch64-linux-gnu/libboost_filesystem.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/aarch64-linux-gnu/liblog4cxx.so;general;/usr/lib/aarch64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/aarch64-linux-gnu/libboost_system.so;general;/usr/lib/aarch64-linux-gnu/libboost_thread.so;general;/usr/lib/aarch64-linux-gnu/libboost_chrono.so;general;/usr/lib/aarch64-linux-gnu/libboost_date_time.so;general;/usr/lib/aarch64-linux-gnu/libboost_atomic.so;general;/usr/lib/aarch64-linux-gnu/libpthread.so;general;/usr/lib/aarch64-linux-gnu/libconsole_bridge.so;general;/usr/lib/aarch64-linux-gnu/libboost_thread.so;general;/usr/lib/aarch64-linux-gnu/libboost_chrono.so;general;/usr/lib/aarch64-linux-gnu/libboost_system.so;general;/usr/lib/aarch64-linux-gnu/libboost_date_time.so;general;/usr/lib/aarch64-linux-gnu/libboost_atomic.so;general;/usr/lib/aarch64-linux-gnu/libpthread.so;general;opencv_vstab;general;opencv_tegra;general;opencv_imuvstab;general;opencv_facedetect;general;opencv_esm_panorama;general;opencv_detection_based_tracker;general;opencv_videostab;general;opencv_video;general;opencv_superres;general;opencv_stitching;general;opencv_photo;general;opencv_objdetect;general;opencv_ml;general;opencv_legacy;general;opencv_imgproc;general;opencv_highgui;general;opencv_gpu;general;opencv_flann;general;opencv_features2d;general;opencv_core;general;opencv_contrib;general;opencv_calib3d;
+
+//Value Computed by CMake
+image_proc_SOURCE_DIR:STATIC=/home/nvidia/autonomous-rc/src/image_pipeline/image_proc
+
+//Value Computed by CMake
+image_publisher_BINARY_DIR:STATIC=/home/nvidia/autonomous-rc/build/image_pipeline/image_publisher
+
+//Dependencies for the target
+image_publisher_LIB_DEPENDS:STATIC=general;/opt/ros/kinetic/lib/libcv_bridge.so;general;/opt/ros/kinetic/lib/libopencv_calib3d3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_core3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_features2d3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_flann3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_highgui3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_imgcodecs3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_imgproc3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_ml3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_objdetect3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_photo3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_shape3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_stitching3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_superres3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_video3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_videoio3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_videostab3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_viz3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_aruco3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_bgsegm3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_bioinspired3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_ccalib3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_cvv3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_datasets3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_dpm3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_face3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_fuzzy3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_hdf3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_line_descriptor3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_optflow3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_phase_unwrapping3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_plot3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_reg3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_rgbd3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_saliency3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_stereo3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_structured_light3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_surface_matching3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_text3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_xfeatures2d3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_ximgproc3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_xobjdetect3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_xphoto3.so.3.2.0;general;/opt/ros/kinetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/kinetic/lib/libcamera_info_manager.so;general;/opt/ros/kinetic/lib/libimage_transport.so;general;/opt/ros/kinetic/lib/libmessage_filters.so;general;/opt/ros/kinetic/lib/libnodeletlib.so;general;/opt/ros/kinetic/lib/libbondcpp.so;general;/usr/lib/aarch64-linux-gnu/libuuid.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/aarch64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/aarch64-linux-gnu/libpython2.7.so;general;/usr/lib/aarch64-linux-gnu/libboost_program_options.so;general;/usr/lib/aarch64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/aarch64-linux-gnu/libboost_signals.so;general;/usr/lib/aarch64-linux-gnu/libboost_filesystem.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/aarch64-linux-gnu/liblog4cxx.so;general;/usr/lib/aarch64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/aarch64-linux-gnu/libboost_system.so;general;/usr/lib/aarch64-linux-gnu/libboost_thread.so;general;/usr/lib/aarch64-linux-gnu/libboost_chrono.so;general;/usr/lib/aarch64-linux-gnu/libboost_date_time.so;general;/usr/lib/aarch64-linux-gnu/libboost_atomic.so;general;/usr/lib/aarch64-linux-gnu/libpthread.so;general;/usr/lib/aarch64-linux-gnu/libconsole_bridge.so;
+
+//Value Computed by CMake
+image_publisher_SOURCE_DIR:STATIC=/home/nvidia/autonomous-rc/src/image_pipeline/image_publisher
+
+//Value Computed by CMake
+image_rotate_BINARY_DIR:STATIC=/home/nvidia/autonomous-rc/build/image_pipeline/image_rotate
+
+//Dependencies for the target
+image_rotate_LIB_DEPENDS:STATIC=general;/opt/ros/kinetic/lib/libcv_bridge.so;general;/opt/ros/kinetic/lib/libopencv_calib3d3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_core3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_features2d3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_flann3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_highgui3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_imgcodecs3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_imgproc3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_ml3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_objdetect3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_photo3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_shape3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_stitching3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_superres3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_video3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_videoio3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_videostab3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_viz3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_aruco3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_bgsegm3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_bioinspired3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_ccalib3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_cvv3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_datasets3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_dpm3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_face3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_fuzzy3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_hdf3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_line_descriptor3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_optflow3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_phase_unwrapping3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_plot3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_reg3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_rgbd3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_saliency3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_stereo3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_structured_light3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_surface_matching3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_text3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_xfeatures2d3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_ximgproc3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_xobjdetect3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_xphoto3.so.3.2.0;general;/opt/ros/kinetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/kinetic/lib/libimage_transport.so;general;/opt/ros/kinetic/lib/libnodeletlib.so;general;/opt/ros/kinetic/lib/libbondcpp.so;general;/usr/lib/aarch64-linux-gnu/libuuid.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/aarch64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/aarch64-linux-gnu/libpython2.7.so;general;/usr/lib/aarch64-linux-gnu/libboost_program_options.so;general;/usr/lib/aarch64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/liborocos-kdl.so;general;/opt/ros/kinetic/lib/liborocos-kdl.so.1.3.0;general;/opt/ros/kinetic/lib/libtf2_ros.so;general;/opt/ros/kinetic/lib/libactionlib.so;general;/opt/ros/kinetic/lib/libmessage_filters.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/aarch64-linux-gnu/libboost_signals.so;general;/usr/lib/aarch64-linux-gnu/libboost_filesystem.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/aarch64-linux-gnu/liblog4cxx.so;general;/usr/lib/aarch64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libtf2.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/aarch64-linux-gnu/libboost_system.so;general;/usr/lib/aarch64-linux-gnu/libboost_thread.so;general;/usr/lib/aarch64-linux-gnu/libboost_chrono.so;general;/usr/lib/aarch64-linux-gnu/libboost_date_time.so;general;/usr/lib/aarch64-linux-gnu/libboost_atomic.so;general;/usr/lib/aarch64-linux-gnu/libpthread.so;general;/usr/lib/aarch64-linux-gnu/libconsole_bridge.so;general;opencv_core;general;opencv_imgproc;
+
+//Value Computed by CMake
+image_rotate_SOURCE_DIR:STATIC=/home/nvidia/autonomous-rc/src/image_pipeline/image_rotate
+
 //The directory containing a CMake configuration file for image_transport.
 image_transport_DIR:PATH=/opt/ros/kinetic/share/image_transport/cmake
+
+//Value Computed by CMake
+image_view_BINARY_DIR:STATIC=/home/nvidia/autonomous-rc/build/image_pipeline/image_view
+
+//Dependencies for the target
+image_view_LIB_DEPENDS:STATIC=general;/opt/ros/kinetic/lib/libcamera_calibration_parsers.so;general;/opt/ros/kinetic/lib/libcv_bridge.so;general;/opt/ros/kinetic/lib/libopencv_calib3d3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_core3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_features2d3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_flann3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_highgui3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_imgcodecs3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_imgproc3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_ml3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_objdetect3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_photo3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_shape3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_stitching3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_superres3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_video3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_videoio3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_videostab3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_viz3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_aruco3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_bgsegm3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_bioinspired3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_ccalib3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_cvv3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_datasets3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_dpm3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_face3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_fuzzy3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_hdf3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_line_descriptor3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_optflow3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_phase_unwrapping3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_plot3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_reg3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_rgbd3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_saliency3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_stereo3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_structured_light3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_surface_matching3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_text3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_xfeatures2d3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_ximgproc3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_xobjdetect3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_xphoto3.so.3.2.0;general;/opt/ros/kinetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/kinetic/lib/libimage_transport.so;general;/opt/ros/kinetic/lib/libmessage_filters.so;general;/opt/ros/kinetic/lib/libnodeletlib.so;general;/opt/ros/kinetic/lib/libbondcpp.so;general;/usr/lib/aarch64-linux-gnu/libuuid.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/aarch64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/aarch64-linux-gnu/libpython2.7.so;general;/usr/lib/aarch64-linux-gnu/libboost_program_options.so;general;/usr/lib/aarch64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/aarch64-linux-gnu/libboost_signals.so;general;/usr/lib/aarch64-linux-gnu/libboost_filesystem.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/aarch64-linux-gnu/liblog4cxx.so;general;/usr/lib/aarch64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/aarch64-linux-gnu/libboost_system.so;general;/usr/lib/aarch64-linux-gnu/libboost_thread.so;general;/usr/lib/aarch64-linux-gnu/libboost_chrono.so;general;/usr/lib/aarch64-linux-gnu/libboost_date_time.so;general;/usr/lib/aarch64-linux-gnu/libboost_atomic.so;general;/usr/lib/aarch64-linux-gnu/libpthread.so;general;/usr/lib/aarch64-linux-gnu/libconsole_bridge.so;general;opencv_vstab;general;opencv_tegra;general;opencv_imuvstab;general;opencv_facedetect;general;opencv_esm_panorama;general;opencv_detection_based_tracker;general;opencv_videostab;general;opencv_video;general;opencv_superres;general;opencv_stitching;general;opencv_photo;general;opencv_objdetect;general;opencv_ml;general;opencv_legacy;general;opencv_imgproc;general;opencv_highgui;general;opencv_gpu;general;opencv_flann;general;opencv_features2d;general;opencv_core;general;opencv_contrib;general;opencv_calib3d;general;/usr/lib/aarch64-linux-gnu/libboost_signals.so;general;/usr/lib/aarch64-linux-gnu/libboost_thread.so;general;/usr/lib/aarch64-linux-gnu/libboost_chrono.so;general;/usr/lib/aarch64-linux-gnu/libboost_system.so;general;/usr/lib/aarch64-linux-gnu/libboost_date_time.so;general;/usr/lib/aarch64-linux-gnu/libboost_atomic.so;general;/usr/lib/aarch64-linux-gnu/libpthread.so;
+
+//Value Computed by CMake
+image_view_SOURCE_DIR:STATIC=/home/nvidia/autonomous-rc/src/image_pipeline/image_view
 
 //Path to a library.
 lib:FILEPATH=/opt/ros/kinetic/lib/libbondcpp.so
@@ -777,6 +1005,9 @@ nav_msgs_DIR:PATH=/opt/ros/kinetic/share/nav_msgs/cmake
 
 //The directory containing a CMake configuration file for nodelet.
 nodelet_DIR:PATH=/opt/ros/kinetic/share/nodelet/cmake
+
+//The directory containing a CMake configuration file for nodelet_topic_tools.
+nodelet_topic_tools_DIR:PATH=/opt/ros/kinetic/share/nodelet_topic_tools/cmake
 
 //The directory containing a CMake configuration file for pcl_conversions.
 pcl_conversions_DIR:PATH=/opt/ros/kinetic/share/pcl_conversions/cmake
@@ -820,6 +1051,9 @@ rospack_DIR:PATH=/opt/ros/kinetic/share/rospack/cmake
 //The directory containing a CMake configuration file for rospy.
 rospy_DIR:PATH=/opt/ros/kinetic/share/rospy/cmake
 
+//The directory containing a CMake configuration file for rostest.
+rostest_DIR:PATH=/opt/ros/kinetic/share/rostest/cmake
+
 //The directory containing a CMake configuration file for rostime.
 rostime_DIR:PATH=/opt/ros/kinetic/share/rostime/cmake
 
@@ -835,8 +1069,26 @@ smclib_DIR:PATH=/opt/ros/kinetic/share/smclib/cmake
 //The directory containing a CMake configuration file for std_msgs.
 std_msgs_DIR:PATH=/opt/ros/kinetic/share/std_msgs/cmake
 
+//The directory containing a CMake configuration file for std_srvs.
+std_srvs_DIR:PATH=/opt/ros/kinetic/share/std_srvs/cmake
+
+//Value Computed by CMake
+stereo_image_proc_BINARY_DIR:STATIC=/home/nvidia/autonomous-rc/build/image_pipeline/stereo_image_proc
+
+//Dependencies for the target
+stereo_image_proc_LIB_DEPENDS:STATIC=general;/opt/ros/kinetic/lib/libcv_bridge.so;general;/opt/ros/kinetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;image_proc;general;/usr/lib/libopencv_vstab.so.2.4.13;general;/usr/lib/libopencv_tegra.so.2.4.13;general;/usr/lib/libopencv_imuvstab.so.2.4.13;general;/usr/lib/libopencv_facedetect.so.2.4.13;general;/usr/lib/libopencv_esm_panorama.so.2.4.13;general;/usr/lib/libopencv_detection_based_tracker.so.2.4.13;general;/usr/lib/libopencv_videostab.so.2.4.13;general;/usr/lib/libopencv_video.so.2.4.13;general;/usr/lib/libopencv_superres.so.2.4.13;general;/usr/lib/libopencv_stitching.so.2.4.13;general;/usr/lib/libopencv_photo.so.2.4.13;general;/usr/lib/libopencv_objdetect.so.2.4.13;general;/usr/lib/libopencv_ml.so.2.4.13;general;/usr/lib/libopencv_legacy.so.2.4.13;general;/usr/lib/libopencv_imgproc.so.2.4.13;general;/usr/lib/libopencv_highgui.so.2.4.13;general;/usr/lib/libopencv_gpu.so.2.4.13;general;/usr/lib/libopencv_flann.so.2.4.13;general;/usr/lib/libopencv_features2d.so.2.4.13;general;/usr/lib/libopencv_core.so.2.4.13;general;/usr/lib/libopencv_contrib.so.2.4.13;general;/usr/lib/libopencv_calib3d.so.2.4.13;general;/opt/ros/kinetic/lib/libimage_geometry.so;general;/opt/ros/kinetic/lib/libopencv_calib3d3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_core3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_features2d3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_flann3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_highgui3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_imgcodecs3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_imgproc3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_ml3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_objdetect3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_photo3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_shape3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_stitching3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_superres3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_video3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_videoio3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_videostab3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_viz3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_aruco3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_bgsegm3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_bioinspired3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_ccalib3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_cvv3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_datasets3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_dpm3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_face3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_fuzzy3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_hdf3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_line_descriptor3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_optflow3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_phase_unwrapping3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_plot3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_reg3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_rgbd3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_saliency3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_stereo3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_structured_light3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_surface_matching3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_text3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_xfeatures2d3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_ximgproc3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_xobjdetect3.so.3.2.0;general;/opt/ros/kinetic/lib/libopencv_xphoto3.so.3.2.0;general;/opt/ros/kinetic/lib/libimage_transport.so;general;/opt/ros/kinetic/lib/libmessage_filters.so;general;/opt/ros/kinetic/lib/libnodeletlib.so;general;/opt/ros/kinetic/lib/libbondcpp.so;general;/usr/lib/aarch64-linux-gnu/libuuid.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/aarch64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/aarch64-linux-gnu/libpython2.7.so;general;/usr/lib/aarch64-linux-gnu/libboost_program_options.so;general;/usr/lib/aarch64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/aarch64-linux-gnu/libboost_signals.so;general;/usr/lib/aarch64-linux-gnu/libboost_filesystem.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/aarch64-linux-gnu/liblog4cxx.so;general;/usr/lib/aarch64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/aarch64-linux-gnu/libboost_system.so;general;/usr/lib/aarch64-linux-gnu/libboost_thread.so;general;/usr/lib/aarch64-linux-gnu/libboost_chrono.so;general;/usr/lib/aarch64-linux-gnu/libboost_date_time.so;general;/usr/lib/aarch64-linux-gnu/libboost_atomic.so;general;/usr/lib/aarch64-linux-gnu/libpthread.so;general;/usr/lib/aarch64-linux-gnu/libconsole_bridge.so;general;opencv_vstab;general;opencv_tegra;general;opencv_imuvstab;general;opencv_facedetect;general;opencv_esm_panorama;general;opencv_detection_based_tracker;general;opencv_videostab;general;opencv_video;general;opencv_superres;general;opencv_stitching;general;opencv_photo;general;opencv_objdetect;general;opencv_ml;general;opencv_legacy;general;opencv_imgproc;general;opencv_highgui;general;opencv_gpu;general;opencv_flann;general;opencv_features2d;general;opencv_core;general;opencv_contrib;general;opencv_calib3d;
+
+//Value Computed by CMake
+stereo_image_proc_SOURCE_DIR:STATIC=/home/nvidia/autonomous-rc/src/image_pipeline/stereo_image_proc
+
+//The directory containing a CMake configuration file for stereo_msgs.
+stereo_msgs_DIR:PATH=/opt/ros/kinetic/share/stereo_msgs/cmake
+
 //The directory containing a CMake configuration file for tf2.
 tf2_DIR:PATH=/opt/ros/kinetic/share/tf2/cmake
+
+//The directory containing a CMake configuration file for tf2_geometry_msgs.
+tf2_geometry_msgs_DIR:PATH=/opt/ros/kinetic/share/tf2_geometry_msgs/cmake
 
 //The directory containing a CMake configuration file for tf2_msgs.
 tf2_msgs_DIR:PATH=/opt/ros/kinetic/share/tf2_msgs/cmake
@@ -909,6 +1161,8 @@ Boost_CHRONO_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 Boost_DATE_TIME_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Boost_DATE_TIME_LIBRARY_RELEASE
 Boost_DATE_TIME_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_DIR
+Boost_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Boost_FILESYSTEM_LIBRARY_DEBUG
 Boost_FILESYSTEM_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Boost_FILESYSTEM_LIBRARY_RELEASE
@@ -931,6 +1185,10 @@ Boost_REGEX_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 Boost_SERIALIZATION_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Boost_SERIALIZATION_LIBRARY_RELEASE
 Boost_SERIALIZATION_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_SIGNALS_LIBRARY_DEBUG
+Boost_SIGNALS_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_SIGNALS_LIBRARY_RELEASE
+Boost_SIGNALS_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Boost_SYSTEM_LIBRARY_DEBUG
 Boost_SYSTEM_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Boost_SYSTEM_LIBRARY_RELEASE
@@ -1124,6 +1382,8 @@ CUDA_TOOLKIT_TARGET_DIR-ADVANCED:INTERNAL=1
 CUDA_TOOLKIT_TARGET_DIR_INTERNAL:INTERNAL=/usr/local/cuda-8.0
 //ADVANCED property for variable: CUDA_VERBOSE_BUILD
 CUDA_VERBOSE_BUILD-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CUDA_VERSION
+CUDA_VERSION-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CUDA_cublas_LIBRARY
 CUDA_cublas_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CUDA_cudart_static_LIBRARY
@@ -1210,6 +1470,12 @@ FIND_PACKAGE_MESSAGE_DETAILS_eigen:INTERNAL=[/usr/include/eigen3][v()]
 FIND_PACKAGE_MESSAGE_DETAILS_openni:INTERNAL=[/usr/lib/libOpenNI.so][/usr/include/ni][v()]
 //Details about finding qhull
 FIND_PACKAGE_MESSAGE_DETAILS_qhull:INTERNAL=[/usr/lib/aarch64-linux-gnu/libqhull.so][/usr/include][v()]
+//ADVANCED property for variable: FREETYPE_INCLUDE_DIR_freetype2
+FREETYPE_INCLUDE_DIR_freetype2-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: FREETYPE_INCLUDE_DIR_ft2build
+FREETYPE_INCLUDE_DIR_ft2build-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: FREETYPE_LIBRARY
+FREETYPE_LIBRARY-ADVANCED:INTERNAL=1
 GTEST_FROM_SOURCE_FOUND:INTERNAL=TRUE
 GTEST_FROM_SOURCE_INCLUDE_DIRS:INTERNAL=/usr/include
 GTEST_FROM_SOURCE_LIBRARIES:INTERNAL=gtest
@@ -1225,6 +1491,86 @@ GTEST_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 GTEST_MAIN_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GTEST_MAIN_LIBRARY_DEBUG
 GTEST_MAIN_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_ATK_INCLUDE_DIR
+GTK2_ATK_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_ATK_LIBRARY_DEBUG
+GTK2_ATK_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_ATK_LIBRARY_RELEASE
+GTK2_ATK_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_CAIRO_INCLUDE_DIR
+GTK2_CAIRO_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_CAIRO_LIBRARY_DEBUG
+GTK2_CAIRO_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_CAIRO_LIBRARY_RELEASE
+GTK2_CAIRO_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_FONTCONFIG_INCLUDE_DIR
+GTK2_FONTCONFIG_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_GDKCONFIG_INCLUDE_DIR
+GTK2_GDKCONFIG_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_GDK_INCLUDE_DIR
+GTK2_GDK_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_GDK_LIBRARY_DEBUG
+GTK2_GDK_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_GDK_LIBRARY_RELEASE
+GTK2_GDK_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_GDK_PIXBUF_INCLUDE_DIR
+GTK2_GDK_PIXBUF_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_GDK_PIXBUF_LIBRARY_DEBUG
+GTK2_GDK_PIXBUF_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_GDK_PIXBUF_LIBRARY_RELEASE
+GTK2_GDK_PIXBUF_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_GIO_LIBRARY_DEBUG
+GTK2_GIO_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_GIO_LIBRARY_RELEASE
+GTK2_GIO_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_GLIBCONFIG_INCLUDE_DIR
+GTK2_GLIBCONFIG_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_GLIB_INCLUDE_DIR
+GTK2_GLIB_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_GLIB_LIBRARY_DEBUG
+GTK2_GLIB_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_GLIB_LIBRARY_RELEASE
+GTK2_GLIB_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_GMODULE_LIBRARY_DEBUG
+GTK2_GMODULE_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_GMODULE_LIBRARY_RELEASE
+GTK2_GMODULE_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_GOBJECT_INCLUDE_DIR
+GTK2_GOBJECT_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_GOBJECT_LIBRARY_DEBUG
+GTK2_GOBJECT_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_GOBJECT_LIBRARY_RELEASE
+GTK2_GOBJECT_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_GTHREAD_LIBRARY_DEBUG
+GTK2_GTHREAD_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_GTHREAD_LIBRARY_RELEASE
+GTK2_GTHREAD_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_GTK_INCLUDE_DIR
+GTK2_GTK_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_GTK_LIBRARY_DEBUG
+GTK2_GTK_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_GTK_LIBRARY_RELEASE
+GTK2_GTK_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_PANGOCAIRO_LIBRARY_DEBUG
+GTK2_PANGOCAIRO_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_PANGOCAIRO_LIBRARY_RELEASE
+GTK2_PANGOCAIRO_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_PANGOFT2_LIBRARY_DEBUG
+GTK2_PANGOFT2_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_PANGOFT2_LIBRARY_RELEASE
+GTK2_PANGOFT2_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_PANGOXFT_LIBRARY_DEBUG
+GTK2_PANGOXFT_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_PANGOXFT_LIBRARY_RELEASE
+GTK2_PANGOXFT_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_PANGO_INCLUDE_DIR
+GTK2_PANGO_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_PANGO_LIBRARY_DEBUG
+GTK2_PANGO_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_PANGO_LIBRARY_RELEASE
+GTK2_PANGO_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GTK2_X11_INCLUDE_DIR
+GTK2_X11_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: OpenCV_3RDPARTY_LIB_DIR_DBG
 OpenCV_3RDPARTY_LIB_DIR_DBG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: OpenCV_3RDPARTY_LIB_DIR_OPT
@@ -1442,7 +1788,7 @@ _BOOST_INCLUDEDIR_LAST:INTERNAL=/usr/include
 //Last used Boost_ADDITIONAL_VERSIONS value.
 _Boost_ADDITIONAL_VERSIONS_LAST:INTERNAL=1.47;1.47.0
 //Components requested for this build tree.
-_Boost_COMPONENTS_SEARCHED:INTERNAL=atomic;chrono;date_time;filesystem;iostreams;regex;serialization;system;thread
+_Boost_COMPONENTS_SEARCHED:INTERNAL=atomic;chrono;date_time;filesystem;iostreams;regex;serialization;signals;system;thread
 //Last used Boost_INCLUDE_DIR value.
 _Boost_INCLUDE_DIR_LAST:INTERNAL=/usr/include
 //Last used Boost_LIBRARY_DIR_DEBUG value.

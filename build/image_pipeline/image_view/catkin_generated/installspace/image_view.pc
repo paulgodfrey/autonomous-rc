@@ -1,0 +1,8 @@
+prefix=/home/nvidia/autonomous-rc/install
+
+Name: image_view
+Description: Description of image_view
+Version: 1.12.20
+Cflags: -I/home/nvidia/autonomous-rc/install/include
+Libs: -L/home/nvidia/autonomous-rc/install/lib 
+Requires: dynamic_reconfigure

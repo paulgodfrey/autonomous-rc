@@ -1,0 +1,8 @@
+prefix=/home/nvidia/autonomous-rc/devel
+
+Name: image_view
+Description: Description of image_view
+Version: 1.12.20
+Cflags: -I/home/nvidia/autonomous-rc/devel/include
+Libs: -L/home/nvidia/autonomous-rc/devel/lib 
+Requires: dynamic_reconfigure
