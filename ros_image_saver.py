@@ -17,10 +17,12 @@ throttle = 0
 steering = 0
 
 def image_callback(msg):
-    global frame
+    global frame, throttle, steering
 
     current_steering = steering
     current_throttle = throttle
+
+    print(str(msg.header.stamp.to_nsec()), frame, current_steering)
 
     try:
         # Convert your ROS Image message to OpenCV2
@@ -35,7 +37,7 @@ def image_callback(msg):
         frame += 1
         filename = "./images/cam" + str(frame) + ".jpeg"
         
-	output = filename + "," + str(current_throttle) + "," + str(current_steering)
+	output = filename + "," + str(current_steering) + "," + str(current_throttle)
 
         with open('recording.csv', 'a') as recording:
             recording.write(output)
@@ -43,16 +45,16 @@ def image_callback(msg):
 
 	cv2.imwrite(filename, cv2_img)
 
-
-
-        print(output)
+        # print(output)
 
 
 def joystick_callback(msg):
     global throttle, steering
 
-    throttle = msg.axes[3]
-    steering = msg.axes[2]
+    throttle = msg.axes[1]
+    steering = msg.axes[3]
+
+    print(str(msg.header.stamp.to_nsec()), steering)
 
 def main():
     rospy.init_node('image_listener')
