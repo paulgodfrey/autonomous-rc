@@ -20,40 +20,16 @@ import yaml
 import rosbag
 import datetime
 
-
 SEC_PER_NANOSEC = 1e9
 MIN_PER_NANOSEC = 6e10
 
-LEFT_CAMERA_TOPIC = "/left_camera/image_color"
-CENTER_CAMERA_TOPIC = "/center_camera/image_color"
-RIGHT_CAMERA_TOPIC = "/right_camera/image_color"
-LEFT_CAMERA_COMPRESSED_TOPIC = LEFT_CAMERA_TOPIC + "/compressed"
-CENTER_CAMERA_COMPRESSED_TOPIC = CENTER_CAMERA_TOPIC + "/compressed"
-RIGHT_CAMERA_COMPRESSED_TOPIC = RIGHT_CAMERA_TOPIC + "/compressed"
-CAMERA_TOPICS = [LEFT_CAMERA_TOPIC, CENTER_CAMERA_TOPIC, RIGHT_CAMERA_TOPIC,
-                 LEFT_CAMERA_COMPRESSED_TOPIC, CENTER_CAMERA_COMPRESSED_TOPIC, RIGHT_CAMERA_COMPRESSED_TOPIC]
-CENTER_CAMERA_TOPICS = [CENTER_CAMERA_TOPIC, CENTER_CAMERA_COMPRESSED_TOPIC]
-STEERING_TOPIC = "/vehicle/steering_report"
-GPS_FIX_TOPIC = "/vehicle/gps/fix"
-GPS_FIX_NEW_TOPIC = "/fix"
+LEFT_CAMERA_TOPIC = "/left/image_rect_color"
+CENTER_CAMERA_TOPIC = "/rgb/image_rect_color"
+RIGHT_CAMERA_TOPIC = "/right/image_rect_color"
+CAMERA_TOPICS = [LEFT_CAMERA_TOPIC, CENTER_CAMERA_TOPIC, RIGHT_CAMERA_TOPIC]
+CENTER_CAMERA_TOPICS = [CENTER_CAMERA_TOPIC]
 
-WHEEL_SPEED_TOPIC = "/vehicle/wheel_speed_report"
-THROTTLE_TOPIC = "/vehicle/throttle_report"
-BRAKE_TOPIC = "/vehicle/brake_report"
-GEAR_TOPIC = "/vehicle/gear_report"
-IMU_TOPIC = "/vehicle/imu/data_raw"
-
-OTHER_TOPICS = [
-    WHEEL_SPEED_TOPIC, THROTTLE_TOPIC, BRAKE_TOPIC, GEAR_TOPIC, IMU_TOPIC]
-
-CAMERA_REMAP_LCCL = {
-    LEFT_CAMERA_TOPIC: CENTER_CAMERA_TOPIC,
-    LEFT_CAMERA_COMPRESSED_TOPIC: CENTER_CAMERA_COMPRESSED_TOPIC,
-    CENTER_CAMERA_TOPIC: LEFT_CAMERA_TOPIC,
-    CENTER_CAMERA_COMPRESSED_TOPIC: LEFT_CAMERA_COMPRESSED_TOPIC,
-    'left_camera': 'center_camera',
-    'center_camera': 'left_camera',
-}
+STEERING_TOPIC = "/vesc/joy"
 
 
 def check_remap_hack(filename):
@@ -68,6 +44,7 @@ def get_bag_info(bag_file, nanosec=True):
     info = yaml.load(subprocess.Popen(
         ['rosbag', 'info', '--yaml', bag_file],
         stdout=subprocess.PIPE).communicate()[0])
+
     if nanosec:
         if 'start' in info:
             info['start'] = int(info['start']*1e9)
@@ -128,13 +105,14 @@ class BagSet(object):
             print("Extracting bag info %s" % f)
             sys.stdout.flush()
             info = get_bag_info(f)
+
             if 'start' not in info or 'end' not in info:
                 print('Ignoring info %s without start/end time' % info['path'])
                 continue
-            if self._remap_camera and check_remap_hack(os.path.basename(f)):
-                info['remap'] = self._remap_camera
+
             info_start = info['start']
             info_end = info['end']
+
             if not self.start_time or not self.end_time:
                 self._extend_range(info_start, info_end)
             elif (info_start - JOIN_THRESH_NS) <= self.end_time and self.start_time <= (info_end + JOIN_THRESH_NS):
@@ -142,14 +120,18 @@ class BagSet(object):
             else:
                 print('Orphaned bag info time range, are there multiple datasets in same folder?')
                 continue
+
             self.infos.append(info)
+
             if self._remap_camera:
                 filter_topics = self._filter_topics_remap(filter_topics)
             filtered = [x['topic'] for x in info['topics'] if not filter_topics or x['topic'] in filter_topics]
             gps_fix_replace = False
+
             if GPS_FIX_NEW_TOPIC in filtered and GPS_FIX_TOPIC in filtered:
                 print("New GPS fix topic %s replacing old %s" % (GPS_FIX_NEW_TOPIC, GPS_FIX_TOPIC))
                 gps_fix_replace = True
+
             for x in filtered:
                 if gps_fix_replace and x == GPS_FIX_TOPIC:
                     # skip old gps topic
@@ -175,6 +157,7 @@ class BagSet(object):
 
     def get_message_count(self, topic_filter=[]):
         count = 0
+
         for info in self.infos:
             if self._remap_camera:
                 topic_filter = self._filter_topics_remap(topic_filter)
@@ -190,6 +173,7 @@ class BagSet(object):
 
     def get_readers(self):
         readers = []
+
         for topic, timestamp_files in iteritems(self.topic_map):
             starts, files = zip(*timestamp_files)
             merged = False
@@ -207,6 +191,7 @@ class BagSet(object):
 
 def find_bagsets(directory, filter_topics=[], pattern="*.bag"):
     sets = []
+
     for root, dirs, files in os.walk(directory):
         matched_files = []
         remap_camera = {}
@@ -299,7 +284,7 @@ class CursorGroup(object):
         return False
 
     __nonzero__ = __bool__
-    
+
     def advance(self, n=1):
         all_done = True
         for c in self.cursors:
@@ -330,6 +315,7 @@ class CursorGroup(object):
     def advance_by_until(self, duration_ns=1*SEC_PER_NANOSEC):
         all_done = True
         end_time_ns = None
+
         for c in self.cursors:
             ready = False
             if c:

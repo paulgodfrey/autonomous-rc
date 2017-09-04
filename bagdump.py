@@ -74,60 +74,31 @@ def steering2dict(msg, steering_dict):
     steering_dict["torque"].append(msg.steering_wheel_torque)
     steering_dict["speed"].append(msg.speed)
 
-
-def gps2dict(msg, gps_dict):
-    gps_dict["timestamp"].append(msg.header.stamp.to_nsec())
-    gps_dict["status"].append(msg.status.status)
-    gps_dict["service"].append(msg.status.service)
-    gps_dict["lat"].append(msg.latitude)
-    gps_dict["long"].append(msg.longitude)
-    gps_dict["alt"].append(msg.altitude)
-
-
-def imu2dict(msg, imu_dict):
-    imu_dict["timestamp"].append(msg.header.stamp.to_nsec())
-    imu_dict["ax"].append(msg.linear_acceleration.x)
-    imu_dict["ay"].append(msg.linear_acceleration.y)
-    imu_dict["az"].append(msg.linear_acceleration.z)
-
-
-def gear2dict(msg, gear_dict):
-    gear_dict["timestamp"].append(msg.header.stamp.to_nsec())
-    gear_dict["gear_state"].append(msg.state.gear)
-    gear_dict["gear_cmd"].append(msg.cmd.gear)
-
-
-def throttle2dict(msg, throt_dict):
-    throt_dict["timestamp"].append(msg.header.stamp.to_nsec())
-    throt_dict["throttle_input"].append(msg.pedal_input)
-
-
-def brake2dict(msg, brake_dict):
-    brake_dict["timestamp"].append(msg.header.stamp.to_nsec())
-    brake_dict["brake_input"].append(msg.pedal_input)
-
-
 def camera_select(topic, select_from):
-    if topic.startswith('/l'):
+    if topic.startswith('/left'):
         return select_from[0]
-    elif topic.startswith('/c'):
+    elif topic.startswith('/rgb'):
         return select_from[1]
-    elif topic.startswith('/r'):
+    elif topic.startswith('/right'):
         return select_from[2]
     else:
         assert False, "Unexpected topic"
 
-
 def main():
     parser = argparse.ArgumentParser(description='Convert rosbag to images and csv.')
+
     parser.add_argument('-o', '--outdir', type=str, nargs='?', default='/output',
         help='Output folder')
+
     parser.add_argument('-i', '--indir', type=str, nargs='?', default='/data',
         help='Input folder where bagfiles are located')
+
     parser.add_argument('-f', '--img_format', type=str, nargs='?', default='jpg',
         help='Image encode format, png or jpg')
+
     parser.add_argument('-m', dest='msg_only', action='store_true', help='Messages only, no immages')
     parser.add_argument('-d', dest='debug', action='store_true', help='Debug print enable')
+
     parser.set_defaults(msg_only=False)
     parser.set_defaults(debug=False)
     args = parser.parse_args()
@@ -144,12 +115,11 @@ def main():
     include_others = True
 
     filter_topics = [STEERING_TOPIC, GPS_FIX_TOPIC, GPS_FIX_NEW_TOPIC]
-    if include_images:
-        filter_topics += CAMERA_TOPICS
-    if include_others:
-        filter_topics += OTHER_TOPICS
+
+    filter_topics = [STEERING_TOPIC, LEFT_CAMERA_TOPIC, CENTER_CAMERA_TOPIC, RIGHT_CAMERA_TOPIC]
 
     bagsets = find_bagsets(indir, filter_topics=filter_topics)
+
     for bs in bagsets:
         print("Processing set %s" % bs.name)
         sys.stdout.flush()
@@ -165,30 +135,16 @@ def main():
         steering_cols = ["timestamp", "angle", "torque", "speed"]
         steering_dict = defaultdict(list)
 
-        gps_cols = ["timestamp", "status", "service", "lat", "long", "alt"]
-        gps_dict = defaultdict(list)
-
-        if include_others:
-            imu_cols = ["timestamp", "ax", "ay", "az"]
-            imu_dict = defaultdict(list)
-
-            throttle_cols = ["timestamp", "throttle_input"]
-            throttle_dict = defaultdict(list)
-
-            brake_cols = ["timestamp", "brake_input"]
-            brake_dict = defaultdict(list)
-
-            gear_cols = ["timestamp", "gear_state", "gear_cmd"]
-            gear_dict = defaultdict(list)
-
         bs.write_infos(dataset_outdir)
         readers = bs.get_readers()
         stats_acc = defaultdict(int)
 
         def _process_msg(topic, msg, stats):
             timestamp = msg.header.stamp.to_nsec()
+
             if topic in CAMERA_TOPICS:
                 outdir = camera_select(topic, (left_outdir, center_outdir, right_outdir))
+
                 if debug_print:
                     print("%s_camera %d" % (topic[1], timestamp))
 
@@ -204,27 +160,6 @@ def main():
 
                 steering2dict(msg, steering_dict)
                 stats['msg_count'] += 1
-
-            elif topic == GPS_FIX_TOPIC or topic == GPS_FIX_NEW_TOPIC:
-                if debug_print:
-                    print("gps      %d %d, %d" % (timestamp, msg.latitude, msg.longitude))
-
-                gps2dict(msg, gps_dict)
-                stats['msg_count'] += 1
-            else:
-                if include_others:
-                    if topic == GEAR_TOPIC:
-                        gear2dict(msg, gear_dict)
-                        stats['msg_count'] += 1
-                    elif topic == THROTTLE_TOPIC:
-                        throttle2dict(msg, throttle_dict)
-                        stats['msg_count'] += 1
-                    elif topic == BRAKE_TOPIC:
-                        brake2dict(msg, brake_dict)
-                        stats['msg_count'] += 1
-                    elif topic == IMU_TOPIC:
-                        imu2dict(msg, imu_dict)
-                        stats['msg_count'] += 1
 
         # no need to cycle through readers in any order for dumping, rip through each on in sequence
         for reader in readers:
@@ -249,28 +184,8 @@ def main():
         steering_df = pd.DataFrame(data=steering_dict, columns=steering_cols)
         steering_df.to_csv(steering_csv_path, index=False)
 
-        gps_csv_path = os.path.join(dataset_outdir, 'gps.csv')
-        gps_df = pd.DataFrame(data=gps_dict, columns=gps_cols)
-        gps_df.to_csv(gps_csv_path, index=False)
-
-        if include_others:
-            gear_csv_path = os.path.join(dataset_outdir, 'gear.csv')
-            gear_df = pd.DataFrame(data=gear_dict, columns=gear_cols)
-            gear_df.to_csv(gear_csv_path, index=False)
-
-            throttle_csv_path = os.path.join(dataset_outdir, 'throttle.csv')
-            throttle_df = pd.DataFrame(data=throttle_dict, columns=throttle_cols)
-            throttle_df.to_csv(throttle_csv_path, index=False)
-
-            brake_csv_path = os.path.join(dataset_outdir, 'brake.csv')
-            brake_df = pd.DataFrame(data=brake_dict, columns=brake_cols)
-            brake_df.to_csv(brake_csv_path, index=False)
-
-            imu_csv_path = os.path.join(dataset_outdir, 'imu.csv')
-            imu_df = pd.DataFrame(data=imu_dict, columns=imu_cols)
-            imu_df.to_csv(imu_csv_path, index=False)
-
         gen_interpolated = True
+
         if include_images and gen_interpolated:
             # A little pandas magic to interpolate steering/gps samples to camera frames
             camera_df['timestamp'] = pd.to_datetime(camera_df['timestamp'])
@@ -279,17 +194,12 @@ def main():
             steering_df['timestamp'] = pd.to_datetime(steering_df['timestamp'])
             steering_df.set_index(['timestamp'], inplace=True)
             steering_df.index.rename('index', inplace=True)
-            gps_df['timestamp'] = pd.to_datetime(gps_df['timestamp'])
-            gps_df.set_index(['timestamp'], inplace=True)
-            gps_df.index.rename('index', inplace=True)
 
             merged = functools.reduce(lambda left, right: pd.merge(
-                left, right, how='outer', left_index=True, right_index=True), [camera_df, steering_df, gps_df])
+                left, right, how='outer', left_index=True, right_index=True), [camera_df, steering_df])
             merged.interpolate(method='time', inplace=True)
 
-            filtered_cols = ['timestamp', 'width', 'height', 'frame_id', 'filename',
-                             'angle', 'torque', 'speed',
-                             'lat', 'long', 'alt']
+            filtered_cols = ['timestamp', 'width', 'height', 'frame_id', 'filename', 'angle']
             filtered = merged.loc[camera_df.index]  # back to only camera rows
             filtered.fillna(0.0, inplace=True)
             filtered['timestamp'] = filtered.index.astype('int')  # add back original timestamp integer col
