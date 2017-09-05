@@ -1,2 +1,4 @@
 *.bag
 images/*
+training_data/*
+bags/*

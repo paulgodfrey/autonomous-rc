@@ -1,8 +1,0 @@
-<launch>
-  <node pkg="rosbag" type="play" name="rosbag" args="-d 2 /home/nvidia/autonomous-rc/cam.bag"/>
-  <node name="extract" pkg="image_view" type="extract_images" respawn="false" output="screen" cwd="ROS_HOME">
-    <remap from="image" to="/rgb/image_rect_color"/>
-    <!-- <param name="filename_format" value="auto%04i.jpg"/>
-    <param name="secs_per_frame" value="0.1"/> -->
-  </node>
-</launch>
