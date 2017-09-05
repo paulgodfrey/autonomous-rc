@@ -14,11 +14,11 @@ args = parser.parse_args()
 model = args.model
 
 lines = []
-input_folder = 'training_data/'
-output_folder = 'testdrive_data/'
+input_folder = 'data_training/'
+output_folder = 'data_testdrive/'
 
 # process training data from log file
-with open('training_data/driving_log.csv') as csvfile:
+with open(input_folder + 'driving_log.csv') as csvfile:
   reader = csv.reader(csvfile)
   for line in reader:
       lines.append(line)
@@ -40,6 +40,7 @@ for line in lines:
 
     image = cv2.imread(current_path)
     image = cv2.resize(image, (0,0), fx=0.3, fy=0.3)
+    image = image[16:216, 84:384]
 
     steering_angle = float(model.predict(image[None, :, :, :], batch_size=1))
     print('preditected', steering_angle)

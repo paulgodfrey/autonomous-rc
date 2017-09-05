@@ -3,12 +3,12 @@ import cv2
 import numpy as np
 
 lines = []
-image_folder = 'training_data/'
+image_folder = 'data_training/'
 
 print('Reading training data')
 
 # process training data from log file
-with open('training_data/driving_log.csv') as csvfile:
+with open(image_folder + 'driving_log.csv') as csvfile:
   reader = csv.reader(csvfile)
   for line in reader:
       lines.append(line)
@@ -23,13 +23,22 @@ for line in lines:
     current_path = image_folder + filename
     print(current_path)
     image = cv2.imread(current_path)
+
+    # scale image down to 216 x 384
     image = cv2.resize(image, (0,0), fx=0.3, fy=0.3)
-    images.append(image)
+    
+    # crop low info portions of image
+    image_left   = image[16:216, 0:300]
+    image_right  = image[16:216, 42:342]
+    image_center = image[16:216, 84:384]
+
+    images.append(image_left)
+    images.append(image_right)
+    images.append(image_center)
 
     # take center steering measurement
     steering_center = float(line[6])
 
-    '''
     # create adjusted steering measurements for the side camera images
     correction = 0.27 # offset to adjust for camera feed angle
     steering_left = steering_center + correction
@@ -38,7 +47,6 @@ for line in lines:
     # append center and adjusted steering angles to measurements array
     measurements.append(steering_left)
     measurements.append(steering_right)
-    '''
     measurements.append(steering_center)
 
 '''
@@ -90,7 +98,7 @@ print('Training model')
 model = Sequential()
 
 # normalization
-model.add(Lambda(lambda x: x / 255.0 - 0.5, input_shape=(216,384,3)))
+model.add(Lambda(lambda x: x / 255.0 - 0.5, input_shape=(200,300,3)))
 
 # crop out skyline and hood of car
 model.add(Cropping2D(cropping=((70,25), (0,0))))

@@ -1,6 +1,7 @@
-testdrive_data/*
+*.h5
+data_testdrive/*
 .DS_Store
 *.bag
 images/*
-training_data/*
+data_training/*
 bags/*
