@@ -23,6 +23,7 @@ for line in lines:
     current_path = image_folder + filename
     print(current_path)
     image = cv2.imread(current_path)
+    image = cv2.resize(image, (0,0), fx=0.3, fy=0.3)
     images.append(image)
 
     # take center steering measurement
@@ -40,6 +41,7 @@ for line in lines:
     '''
     measurements.append(steering_center)
 
+'''
 ### Data exploration visualization of steering angles
 import matplotlib.pyplot as plt
 
@@ -60,6 +62,7 @@ plt.grid(True)
 
 ### Save histogram to a file
 plt.savefig('distribution-of-steering-angles.png')
+'''
 
 augmented_images, augmented_measurements = [], []
 
@@ -87,7 +90,7 @@ print('Training model')
 model = Sequential()
 
 # normalization
-model.add(Lambda(lambda x: x / 255.0 - 0.5, input_shape=(720,1280,3)))
+model.add(Lambda(lambda x: x / 255.0 - 0.5, input_shape=(216,384,3)))
 
 # crop out skyline and hood of car
 model.add(Cropping2D(cropping=((70,25), (0,0))))
