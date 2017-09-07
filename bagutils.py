@@ -31,6 +31,7 @@ CENTER_CAMERA_TOPICS = [CENTER_CAMERA_TOPIC]
 
 STEERING_TOPIC = "/vesc/joy"
 
+LIDAR_TOPIC = "/scan"
 
 def check_remap_hack(filename):
     if fnmatch.fnmatch(filename, "2016-10-25*.bag"):
