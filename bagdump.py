@@ -86,7 +86,7 @@ def camera_select(topic, select_from):
 def main():
     parser = argparse.ArgumentParser(description='Convert rosbag to images and csv.')
 
-    parser.add_argument('-o', '--outdir', type=str, nargs='?', default='./training_data',
+    parser.add_argument('-o', '--outdir', type=str, nargs='?', default='./data_training',
         help='Output folder')
 
     parser.add_argument('-i', '--indir', type=str, nargs='?', default='./bags',
