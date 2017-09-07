@@ -34,9 +34,9 @@ for line in lines:
     current_path = input_folder + filename
     output_path = output_folder + filename
 
-    print('filename', filename)
-    print('input image', current_path)
-    print('output image', output_path)
+    # print('filename', filename)
+    # print('input image', current_path)
+    # print('output image', output_path)
 
     image = cv2.imread(current_path)
     image = cv2.resize(image, (0,0), fx=0.3, fy=0.3)
