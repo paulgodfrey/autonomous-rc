@@ -73,6 +73,15 @@ def steering2dict(msg, steering_dict):
     steering_dict["angle"].append(msg.axes[3])
     steering_dict["speed"].append(msg.axes[1])
 
+
+def lidar2dict(msg, lidar_dict):
+    lidar_dict["timestamp"].append(msg.header.stamp.to_nsec()) 
+    lidar_dict["angle_increment"].append(msg.angle_increment)
+    lidar_dict["angle_min"].append(msg.angle_min)
+    lidar_dict["angle_max"].append(msg.angle_max)
+    lidar_dict["ranges"].append(msg.ranges)
+
+
 def camera_select(topic, select_from):
     if topic.startswith('/left'):
         return select_from[0]
@@ -86,7 +95,7 @@ def camera_select(topic, select_from):
 def main():
     parser = argparse.ArgumentParser(description='Convert rosbag to images and csv.')
 
-    parser.add_argument('-o', '--outdir', type=str, nargs='?', default='./training_data',
+    parser.add_argument('-o', '--outdir', type=str, nargs='?', default='./data_training',
         help='Output folder')
 
     parser.add_argument('-i', '--indir', type=str, nargs='?', default='./bags',
@@ -113,7 +122,7 @@ def main():
     include_images = False if msg_only else True
     include_others = True
 
-    filter_topics = [STEERING_TOPIC, LEFT_CAMERA_TOPIC, CENTER_CAMERA_TOPIC, RIGHT_CAMERA_TOPIC]
+    filter_topics = [LIDAR_TOPIC, STEERING_TOPIC, LEFT_CAMERA_TOPIC, CENTER_CAMERA_TOPIC, RIGHT_CAMERA_TOPIC]
     
     print("topics", filter_topics)
 
@@ -135,6 +144,9 @@ def main():
 
         steering_cols = ["timestamp", "angle", "torque", "speed"]
         steering_dict = defaultdict(list)
+
+        lidar_cols = ["timestamp", "angle_increment", "angle_min", "angle_max",  "ranges"]
+        lidar_dict = defaultdict(list)
 
         bs.write_infos(dataset_outdir)
         readers = bs.get_readers()
@@ -162,6 +174,14 @@ def main():
                 steering2dict(msg, steering_dict)
                 stats['msg_count'] += 1
 
+
+            elif topic == LIDAR_TOPIC:
+                if debug_print:
+                    print("lidar %d %f" % (timestamp))
+
+                lidar2dict(msg, lidar_dict)
+                stats['msg_count'] += 1
+
         # no need to cycle through readers in any order for dumping, rip through each on in sequence
         for reader in readers:
             for result in reader.read_messages():
@@ -184,6 +204,10 @@ def main():
         steering_csv_path = os.path.join(dataset_outdir, 'steering.csv')
         steering_df = pd.DataFrame(data=steering_dict, columns=steering_cols)
         steering_df.to_csv(steering_csv_path, index=False)
+
+        lidar_csv_path = os.path.join(dataset_outdir, 'lidar.csv')
+        lidar_df = pd.DataFrame(data=lidar_dict, columns=lidar_cols)
+        lidar_df.to_csv(lidar_csv_path, index=False)
 
         gen_interpolated = True
 
