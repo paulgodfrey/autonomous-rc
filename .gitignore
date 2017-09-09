@@ -1,3 +1,4 @@
+recorded_data/*
 *.h5
 data_testdrive/*
 .DS_Store
