@@ -28,9 +28,9 @@ for line in lines:
     image = cv2.resize(image, (0,0), fx=0.3, fy=0.3)
     
     # crop low info portions of image
-    image_left   = image[16:216, 0:300]
-    image_right  = image[16:216, 42:342]
-    image_center = image[16:216, 84:384]
+    image_left   = image[86:216, 0:300]
+    image_right  = image[86:216, 42:342]
+    image_center = image[86:216, 84:384]
 
     images.append(image_left)
     images.append(image_right)
@@ -38,9 +38,11 @@ for line in lines:
 
     # take center steering measurement
     steering_center = float(line[6])
+    steering_center = round(steering_center, 2)
+    print(steering_center)
 
     # create adjusted steering measurements for the side camera images
-    correction = 0.10 # offset to adjust for camera feed angle
+    correction = 0.15 # offset to adjust for camera feed angle
     steering_left = steering_center + correction
     steering_right = steering_center - correction
 
@@ -98,7 +100,7 @@ print('Training model')
 
 model = Sequential()
 
-model.add(BatchNormalization(epsilon=0.001, axis=1,input_shape=(200, 300, 3)))
+model.add(BatchNormalization(epsilon=0.001, axis=1,input_shape=(130, 300, 3)))
 
 model.add(Convolution2D(24,5,5,border_mode='valid', activation='relu', subsample=(2,2)))
 model.add(Convolution2D(36,5,5,border_mode='valid', activation='relu', subsample=(2,2)))
@@ -120,7 +122,7 @@ checkpoint = ModelCheckpoint(filepath, monitor='val_loss', verbose=1, save_best_
 callbacks_list = [checkpoint]
 
 # train model with a validation split of 20%, shuffled training data, for a 4 epochs
-model.fit(X_train, y_train, validation_split=0.2, shuffle=True, callbacks=callbacks_list, nb_epoch=2)
+model.fit(X_train, y_train, validation_split=0.2, shuffle=True, callbacks=callbacks_list, nb_epoch=4)
 
 # save trained model
 model.save('model.h5')

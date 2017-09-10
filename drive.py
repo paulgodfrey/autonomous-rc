@@ -40,11 +40,12 @@ for line in lines:
 
     image = cv2.imread(current_path)
     image = cv2.resize(image, (0,0), fx=0.3, fy=0.3)
-    image = image[16:216, 84:384]
+    image = image[86:216, 84:384]
 
     steering_angle = float(model.predict(image[None, :, :, :], batch_size=1))
     print('preditected', steering_angle)
 
     image = cv2.putText(image, str(steering_angle), (20, 40), font, 1, (255,255,255), 2)
+
 
     cv2.imwrite(output_path, image)
