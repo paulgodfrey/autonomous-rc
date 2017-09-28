@@ -13,9 +13,13 @@ parser.add_argument('-m', '--model', type=str, nargs='?', default='model.h5', he
 args = parser.parse_args()
 model = args.model
 
+history_size = 5
+
 lines = []
 input_folder = 'data_training/'
 output_folder = 'data_testdrive/'
+
+steering_hist = np.zeros(history_size)
 
 # process training data from log file
 with open(input_folder + 'driving_log.csv') as csvfile:
@@ -34,18 +38,19 @@ for line in lines:
     current_path = input_folder + filename
     output_path = output_folder + filename
 
-    # print('filename', filename)
-    # print('input image', current_path)
-    # print('output image', output_path)
+    image_raw = cv2.imread(current_path)
+    image_raw = cv2.resize(image_raw, (0,0), fx=0.3, fy=0.3)
 
-    image = cv2.imread(current_path)
-    image = cv2.resize(image, (0,0), fx=0.3, fy=0.3)
-    image = image[86:216, 84:384]
+    # focus on area model was trained on
+    image_pred = image_raw[86:216, 84:384]
 
-    steering_angle = float(model.predict(image[None, :, :, :], batch_size=1))
-    print('preditected', steering_angle)
+    steering_angle = float(model.predict(image_pred[None, :, :, :], batch_size=1))
 
-    image = cv2.putText(image, str(steering_angle), (20, 40), font, 1, (255,255,255), 2)
+    steering_hist = np.roll(steering_hist, -1)
+    steering_hist[history_size - 1] = steering_angle
+    steering_smoothed = np.median(steering_hist)
+    print('preditected', steering_smoothed)
 
+    image_out = cv2.putText(image_raw, "{0:.3f}".format(steering_smoothed), (20, 40), font, 0.7, (255,255,255), 2)
 
-    cv2.imwrite(output_path, image)
+    cv2.imwrite(output_path, image_out)
